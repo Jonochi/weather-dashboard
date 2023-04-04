@@ -41,15 +41,15 @@ function renderCurrentWeather(data) {
     current.append(date);
 
     let temp = document.createElement("div");
-    temp.textContent = data.main.temp;
+    temp.textContent = "Current Tempurature: " + data.main.temp + " F";
     current.append(temp);
 
     let humidity = document.createElement("div");
-    humidity.textContent = data.main.humidity;
+    humidity.textContent = "Current Humidity: " + data.main.humidity;
     current.append(humidity);
 
     let windSpeed = document.createElement("div");
-    windSpeed.textContent = data.wind.speed;
+    windSpeed.textContent = "Current windspeed: "+ data.wind.speed + "MPH";
     current.append(windSpeed);
 
     let icon = document.createElement("img");
