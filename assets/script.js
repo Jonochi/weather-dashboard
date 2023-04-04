@@ -82,6 +82,7 @@ let avgWindspeed = 0;
 let avgHumidity = 0;
 
 function renderForecast(data) {
+    console.log(data);
 
     forecast.innerHTML = "";
     let infoIndex = [7, 15, 23, 31, 39];
@@ -100,10 +101,17 @@ function renderForecast(data) {
         avgWindspeed = avgWindspeed + data.list[i].wind.speed;
 
         if (infoIndex.includes(i)) {
+
+            let date = document.createElement("div");
+            date.textContent = new Date(data.list[i].dt * 1000).toLocaleTimeString("en-US", { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+            forecastCard.append(date)
+
+
             hiTemp = document.createElement("div")
             hiTemp.textContent = "High: " + parseInt(forecastHigh)
             forecastCard.append(hiTemp)
             forecastHigh = -1000
+            
 
             lowTemp = document.createElement("div");
             lowTemp.textContent = "Low: " + parseInt(forecastLow);
@@ -122,6 +130,9 @@ function renderForecast(data) {
 
             forecastIcon.src = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png";
             forecastCard.append(forecastIcon);
+
+
+            
 
             forecast.append(forecastCard);
 
